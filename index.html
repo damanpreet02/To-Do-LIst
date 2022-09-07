@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasks-View</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+
+    <header>
+        <div id="header-div">
+            <h1 id="head1">Tasks</h1>
+            <h1 id="head2">View</h1>
+        </div>
+    </header>
+
+
+    <div id="main-div">
+        <div id="bdiv">
+            <button id="b1" onclick="add()">+</button>
+            <button id="b2"  onclick="add()">Add Task</button>
+        </div>
+        <div id="box-div"></div>
+    </div>
+    <script>
+        function add(){
+            var boxd=document.getElementById("box-div");
+            var box=document.createElement("div");
+           
+            box.className="box";
+           
+            var heading= String(prompt("ENTER THE HEADING"));
+            var items=Number(prompt("ENTER NUMBER OF ITEMS (ONLY NUMBER)"))
+            var arr=new Array();
+           
+            for(var i=0;i<items;i++){
+                arr[i]=prompt("ENTER "+(i+1)+" ELEMENT");
+            }
+            
+            box.innerHTML+=`<h2>${heading}</h2>`;
+            for(var i=0;i<items;i++){
+                    box.innerHTML+=`<h4>
+                        <input type="checkbox" onclick="check(id${i},label${i})" id="id${i}">
+                        <label for="id${i}" id="label${i}">${arr[i]}</label>    
+                        </h4>`
+            }
+                boxd.appendChild(box);
+        }
+
+    </script>
+</body>
+
+</html>
